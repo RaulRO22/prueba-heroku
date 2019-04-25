@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<center><%= link_to 'New Product', new_high_score_path, class: "btn btn-success" %></center>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="font-size: 18px;">Product Name</th>
+        <th style="font-size: 18px;">Stock</th>
+        <th colspan="3" style="font-size: 18px;"><center>Actions</center></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @high_scores.each do |high_score| %>
+      <tr >
+        <td style="font-size: 14px;" class="success"><%= high_score.game %></td>
+        <td style="font-size: 14px;" class="success"><%= high_score.score %></td>
+        <td style="font-size: 14px;" class="warning">
+          <%= link_to high_score do %>
+            <span class="glyphicon glyphicon-eye-open"></span> Show
+          <% end %>
+        </td>
+        <td style="font-size: 14px;" class="warning">
+          <%= link_to edit_high_score_path(high_score) do%>
+            <span class="glyphicon glyphicon-pencil"></span> Edit
+          <% end %>
+        </td>
+        <td style="font-size: 14px;" class="warning">
+          <%= link_to (high_score), method: :delete, data: { confirm: 'Are you sure?' } do%>
+            <span class="glyphicon glyphicon-trash"></span> Delete
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
